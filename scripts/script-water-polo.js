@@ -13,6 +13,7 @@ function getRandomElephant() {
 
 function checked(data) {
   // Retourner un string vide si data est égale à "Unavailable"
+  return data === "Unavailable" ? "" : data;
 }
 
 // Initialiser une nouvelle équipe grâce à la class Team
@@ -21,9 +22,35 @@ let myTeam = new Team();
 // À l'ajout d'un nouvel éléphant... (événement click)
 newElephant.addEventListener("click", function(e) {
   // Gérer le loader sur le bouton (tip = class 'loading')
+  newElephant.classList.add("loading");
 
   // Récupérer un éléphant au hasard grâce à l'API
-  console.log(getRandomElephant());
+  let data = getRandomElephant();
+  const {
+    name,
+    affiliation: currentTeam,
+    species,
+    sex,
+    dob: birth,
+    image,
+    note
+  } = data;
+
+  let nouvelElephant = new Elephant(
+    name,
+    checked(birth),
+    species,
+    sex,
+    image,
+    currentTeam,
+    note,
+    myTeam
+  );
+
+  if (myTeam.getMembers().length < 5) {
+    nouvelElephant.create();
+  }
+  console.log(nouvelElephant);
   newElephant.classList.remove("loading");
 });
 

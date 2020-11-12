@@ -55,7 +55,7 @@ export default class Team {
   }
 
   getMembers() {
-    // Retourner l'ensemble des membres de l'équipe
+    return this._members;
   }
 
   addMember(member) {
