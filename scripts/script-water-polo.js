@@ -1,18 +1,18 @@
 import Team from "./Classes/Team.js";
 import Elephant from "./Classes/Elephant.js";
-import data from "../data/data";
+import data from "../Data/data.js";
 
 const newElephant = document.querySelector("#add");
 const createTeam = document.querySelector("#validate");
 const modalValidation = document.querySelector("#modal");
 const randomElephantAPI = "http://82.165.22.111:80/public/elephants/random";
 
-function checked(data) {
-  // Retourner un string vide si data est égale à "Unavailable"
+function getRandomElephant() {
+  return data[Math.floor(Math.random() * data.length)];
 }
 
-function getRandomElephant(){
-  return data[Math.floor(Math.random() * data.length)];
+function checked(data) {
+  // Retourner un string vide si data est égale à "Unavailable"
 }
 
 // Initialiser une nouvelle équipe grâce à la class Team
@@ -21,10 +21,11 @@ let myTeam = new Team();
 // À l'ajout d'un nouvel éléphant... (événement click)
 newElephant.addEventListener("click", function(e) {
   // Gérer le loader sur le bouton (tip = class 'loading')
-  newElephant.classList.add("loading");
 
   // Récupérer un éléphant au hasard grâce à l'API
   console.log(getRandomElephant());
+  newElephant.classList.remove("loading");
+});
 
 // Gérer le cas où la réponse est ok
 
