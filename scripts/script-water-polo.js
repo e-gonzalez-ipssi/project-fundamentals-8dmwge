@@ -49,8 +49,9 @@ newElephant.addEventListener("click", function(e) {
 
   if (myTeam.getMembers().length < 5) {
     nouvelElephant.create();
+    myTeam.addMember(nouvelElephant);
   }
-  console.log(nouvelElephant);
+
   newElephant.classList.remove("loading");
 });
 

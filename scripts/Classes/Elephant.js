@@ -37,14 +37,24 @@ export default class Elephant {
       "gardien"
     ];
     // Créer un élément select
+    let selectList = document.createElement("select");
     // Ajouter au select la class .form-select
+    selectList.classList = "card-body";
     // Pour chaque position...
-    // Créer un élément option
-    // Définir la value de l'élément option courrant
-    // Définir le text de l'élément option courrant
-    // Ajouter l'option au select
+    for (let i = 0; i < array.length; i++) {
+      // Créer un élément option
+      const option = document.createElement("option");
+      // Définir la value de l'élément option courrant
+      option.value = array[i];
+      // Définir le text de l'élément option courrant
+      option.text = array[i];
+      // Ajouter l'option au select
+      selectList.appendChild(option);
+    }
+
     // Définir l'action à effectuer au onchange du select
     // Retourner le select
+    return selectList;
   }
 
   buildImage() {
@@ -148,6 +158,7 @@ export default class Elephant {
     body.appendChild(par);
 
     // Ajouter un élément select des positions (ailier, gardien...) à l'élément article
+    body.appendChild(this.positionSelect());
     // Créer 3 checkbox pour les options Capitaine, Protections d'oreilles et Protège dents
     // TODO refactoriser
     // Ajouter les 3 checkbox à l'article

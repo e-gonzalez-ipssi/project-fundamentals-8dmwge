@@ -60,9 +60,19 @@ export default class Team {
 
   addMember(member) {
     // Ajouter le paramètre member à la liste _members de la class
+    this._members.push(member);
     // Définir l'attribut data-badge avec le nombre de membre de l'équipe
+    newElephantBadge.setAttribute(
+      "data-badge",
+      this._workforce - this._members.length
+    );
     // Dans le cas où l'équipe est au complet
-    // Supprimer la class .disabled du bouton #validate
-    // Ajouter la class .disabled au bouton #add
+    if (this._members.length == 5) {
+      // Supprimer la class .disabled du bouton #validate
+      createTeam.classList.remove("disabled");
+
+      // Ajouter la class .disabled au bouton #add
+      newElephant.classList.add("disabled");
+    }
   }
 }
