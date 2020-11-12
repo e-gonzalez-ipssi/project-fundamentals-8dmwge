@@ -1,5 +1,6 @@
 import Team from "./Classes/Team.js";
 import Elephant from "./Classes/Elephant.js";
+import data from "../data/data";
 
 const newElephant = document.querySelector("#add");
 const createTeam = document.querySelector("#validate");
@@ -8,6 +9,10 @@ const randomElephantAPI = "http://82.165.22.111:80/public/elephants/random";
 
 function checked(data) {
   // Retourner un string vide si data est égale à "Unavailable"
+}
+
+function getRandomElephant(){
+  return data[Math.floor(Math.random() * data.length)];
 }
 
 // Initialiser une nouvelle équipe grâce à la class Team
@@ -19,15 +24,7 @@ newElephant.addEventListener("click", function(e) {
   newElephant.classList.add("loading");
 
   // Récupérer un éléphant au hasard grâce à l'API
-  fetch(randomElephantAPI, { headers: { "Content-Type": "text/json" } }).then(
-    response => {
-      // Transformer la réponse en json et utiliser la méthode then() pour accéder aux data
-      response.json().then(res => {
-        console.log(res);
-      });
-    }
-  );
-});
+  console.log(getRandomElephant());
 
 // Gérer le cas où la réponse est ok
 
